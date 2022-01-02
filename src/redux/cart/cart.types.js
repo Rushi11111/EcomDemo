@@ -1,0 +1,5 @@
+const CART_TYPES = {
+    TOGGLE_CART_HIDE: 'TOGGLE_CART_HIDE'
+}
+
+export default CART_TYPES
