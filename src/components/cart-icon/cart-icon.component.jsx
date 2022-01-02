@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {ReactComponent as ShoppingIcon} from "../../Asset/shopping-bag.svg";
 import {toggleCartHide} from "../../redux/cart/cart.actions";
 import './cart-icon.styles.scss'
-import {selectCartItemsCount} from "../../redux/cart/cart.selectors";
+import {selectCartItemsCount} from "../../redux/cart/cart.selector";
 
 const CartIcon = ({toggleCartHide, itemCount}) => (
     <div className={'cart-icon'} onClick = {toggleCartHide}>
