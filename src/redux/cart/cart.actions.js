@@ -11,3 +11,10 @@ export const addItem = (item) => ({
     payload: item
     }
 )
+
+
+export const removeAllItem = (item) => ({
+        type: CART_TYPES.REMOVE_ALL_ITEM,
+        payload: item
+    }
+)
