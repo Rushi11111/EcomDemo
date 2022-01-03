@@ -2,7 +2,6 @@ import React from 'react';
 import {Switch, Route, withRouter, Redirect} from 'react-router-dom';
 import {connect} from "react-redux";
 import './App.css';
-
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from "./pages/shop/shop.component";
 import Header from "./components/header/header.component";
@@ -12,11 +11,9 @@ import {createUserProfileDocument} from "./firebase/firebase.utils";
 import {setCurrentUser} from "./redux/user/user.actions";
 import {selectCurrentUser} from "./redux/user/user.selector";
 import CheckoutPage from "./pages/checkout/checkout.component";
-class App extends React.Component{
-    constructor() {
-        super()
-    }
 
+
+class App extends React.Component{
     unsubscribeFromAuth = null
 
     componentDidMount() {
@@ -24,7 +21,7 @@ class App extends React.Component{
             if(userAuth != null) {
                 const userRef = await createUserProfileDocument(userAuth)
 
-                userRef.onSnapshot(snapShot => {
+                await userRef.onSnapshot(snapShot => {
                     this.props.setCurrentUser(
                         {
                             id : snapShot.id,

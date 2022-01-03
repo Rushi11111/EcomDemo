@@ -8,7 +8,6 @@ import CheckoutItem from "../../components/checkout-item/checkpout-item.componen
 
 
 const CheckoutPage = ({cartItems, cartTotal}) => {
-    console.log(cartItems.map(cartItem => (cartItem)))
     return (
         <div className={'checkout-page'}>
             <div className={'checkout-header'}>
