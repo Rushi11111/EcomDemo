@@ -2,10 +2,9 @@ import React from "react";
 
 import './checkout.styles.scss';
 import {connect} from 'react-redux';
-import {selectCartItems} from "../../redux/cart/cart.selector";
-import {selectCartTotal} from "../../redux/cart/cart.selector";
+import {selectCartItems,selectCartTotal} from "../../redux/cart/cart.selector";
 import CheckoutItem from "../../components/checkout-item/checkpout-item.component";
-
+import StripeCheckoutButton from "../../components/stripe-button/stripe-button.component";
 
 const CheckoutPage = ({cartItems, cartTotal}) => {
     return (
@@ -44,6 +43,10 @@ const CheckoutPage = ({cartItems, cartTotal}) => {
             <div className={'total'}>
                 TOTAL: ${cartTotal}
             </div>
+            <div className={'test-warning'}>
+                Card For Testing <br/> Card Number: 4242 4242 4242 4242, CVC: 123, MM/YY: Any Future Date
+            </div>
+            <StripeCheckoutButton price={cartTotal}/>
         </div>
     )
 }

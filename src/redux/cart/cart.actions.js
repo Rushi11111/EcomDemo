@@ -27,3 +27,9 @@ export const removeItem = (item) => (
         payload: item
     }
 )
+
+export const emptyCart = () => (
+    {
+        type: CART_TYPES.CLEAR_CART
+    }
+)
