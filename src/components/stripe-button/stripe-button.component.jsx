@@ -2,7 +2,7 @@ import React from "react";
 import StripeCheckout from "react-stripe-checkout";
 import {connect} from "react-redux";
 import {emptyCart} from "../../redux/cart/cart.actions";
-import {var_config} from "../../../config";
+import {var_config} from "../../config";
 
 const StripeCheckoutButton = ({price, emptyCart}) => {
     const priceForStripe = price * 100;
