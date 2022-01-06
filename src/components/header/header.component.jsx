@@ -1,8 +1,7 @@
 import React from "react";
-import {Link} from 'react-router-dom'
+import {Link, Route} from 'react-router-dom'
 import './header.styles.scss'
 import {ReactComponent as Logo} from "../../Asset/crown.svg";
-import {auth} from '../../firebase/firebase.utils';
 import {connect} from "react-redux";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropDown from "../cart-dropdown/cart-dropdown.component";

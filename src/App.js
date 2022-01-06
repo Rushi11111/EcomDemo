@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import {Switch, Route, withRouter, Redirect} from 'react-router-dom';
 import {connect} from "react-redux";
 import './App.css';
@@ -12,32 +12,26 @@ import {selectCurrentUser} from "./redux/user/user.selector";
 import CheckoutPage from "./pages/checkout/checkout.component";
 
 
-class App extends React.Component{
+const App = ({checkUserSession,currentUser}) => {
+    useEffect(() => {checkUserSession();},[checkUserSession])
 
-    componentDidMount() {
-        const {checkUserSession} = this.props;
-        checkUserSession();
-    }
+    return (
+        <div>
+            <Header/>
+            <Switch>
+                <Route exact path='/' component={HomePage} />
+                <Route exact path = '/checkout' component = {CheckoutPage} />
+                <Route path='/shop' component={ShopPage} />
+                <Route exact path='/signin'
+                       render={ () => currentUser ?
+                           (<Redirect to = '/' />)
+                           :
+                           (<SignInAndSignUpComponent />) }
+                />
 
-    render() {
-        return (
-            <div>
-                <Header/>
-                <Switch>
-                    <Route exact path='/' component={HomePage} />
-                    <Route exact path = '/checkout' component = {CheckoutPage} />
-                    <Route path='/shop' component={ShopPage} />
-                    <Route exact path='/signin'
-                           render={ () => this.props.currentUser ?
-                               (<Redirect to = '/' />)
-                               :
-                               (<SignInAndSignUpComponent />) }
-                    />
-
-                </Switch>
-            </div>
-        );
-    }
+            </Switch>
+        </div>
+    );
 }
 
 const mapStateToProps = (state) => ({
