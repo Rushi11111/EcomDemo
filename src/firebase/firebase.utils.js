@@ -1,16 +1,9 @@
 import firebase from "firebase/app";
 import 'firebase/auth';
 import 'firebase/firestore';
+import {FIREBASE_KEY} from "../config";
 
-const config = {
-    apiKey: "AIzaSyB9LLbWpVbnpPpoVLWvNuWQgbWt_my3HGU",
-    authDomain: "crwn-db-8e957.firebaseapp.com",
-    projectId: "crwn-db-8e957",
-    storageBucket: "crwn-db-8e957.appspot.com",
-    messagingSenderId: "1000914085143",
-    appId: "1:1000914085143:web:dab7533ee43e1770d18352",
-    measurementId: "G-820TMPDM0J"
-};
+const config = FIREBASE_KEY;
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
     if(!userAuth)
@@ -74,8 +67,17 @@ export const addCollectionAndItems = async (collectionsKey, objectsToAdd) => {
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({prompt: 'select_account'});
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const getCurrentUser = () => {
+    return new Promise((resolve, reject) => {
+        const unsubscribe = auth.onAuthStateChanged(userAuth => {
+            unsubscribe();
+            resolve(userAuth);
+        }, reject);
+    })
+}
+
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({prompt: 'select_account'});
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
 export default firebase;
