@@ -1,9 +1,16 @@
 import firebase from "firebase/app";
 import 'firebase/auth';
 import 'firebase/firestore';
-import {FIREBASE_KEY} from "../config";
 
-const config = FIREBASE_KEY;
+const config = {
+    apiKey: "AIzaSyB9LLbWpVbnpPpoVLWvNuWQgbWt_my3HGU",
+    authDomain: "crwn-db-8e957.firebaseapp.com",
+    projectId: "crwn-db-8e957",
+    storageBucket: "crwn-db-8e957.appspot.com",
+    messagingSenderId: "1000914085143",
+    appId: "1:1000914085143:web:dab7533ee43e1770d18352",
+    measurementId: "G-820TMPDM0J"
+};
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
     if(!userAuth)
