@@ -1,19 +1,23 @@
 import React,{useEffect} from 'react';
 import {Switch, Route, withRouter, Redirect} from 'react-router-dom';
-import {connect} from "react-redux";
+import {useSelector,useDispatch} from "react-redux";
 import './App.css';
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from "./pages/shop/shop.component";
 import Header from "./components/header/header.component";
 import SignInAndSignUpComponent from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
 import {checkUserSession} from "./redux/user/user.actions";
-import {setCurrentUser} from "./redux/user/user.actions";
 import {selectCurrentUser} from "./redux/user/user.selector";
 import CheckoutPage from "./pages/checkout/checkout.component";
 
 
-const App = ({checkUserSession,currentUser}) => {
-    useEffect(() => {checkUserSession();},[checkUserSession])
+const App = ({match}) => {
+    const currentUser = useSelector(selectCurrentUser)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(checkUserSession())
+    },[dispatch])
 
     return (
         <div>
@@ -34,12 +38,4 @@ const App = ({checkUserSession,currentUser}) => {
     );
 }
 
-const mapStateToProps = (state) => ({
-    currentUser: selectCurrentUser(state)
-})
-
-const mapDispatchToProps = dispatch => ({
-    checkUserSession: () => dispatch(checkUserSession())
-})
-
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(App));
+export default withRouter(App);

@@ -1,5 +1,5 @@
 import React from "react";
-import {Link, Route} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import './header.styles.scss'
 import {ReactComponent as Logo} from "../../Asset/crown.svg";
 import {connect} from "react-redux";
