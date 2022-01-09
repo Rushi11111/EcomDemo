@@ -1,9 +1,9 @@
 .header {
   height: 70px;
-  width: 95%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 
   .logo-container {
     height: 100%;
@@ -17,7 +17,6 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-top: 14px;
 
     .option {
       padding: 10px 15px;

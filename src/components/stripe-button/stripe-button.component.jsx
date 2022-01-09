@@ -1,36 +1,29 @@
-import React from "react";
-import StripeCheckout from "react-stripe-checkout";
-import {connect} from "react-redux";
-import {emptyCart} from "../../redux/cart/cart.actions";
-import {var_config} from "../../config";
+import React from 'react';
+import StripeCheckout from 'react-stripe-checkout';
 
-const StripeCheckoutButton = ({price, emptyCart}) => {
-    const priceForStripe = price * 100;
-    const publishableKey = var_config.StripePublishableKey
+const StripeCheckoutButton = ({ price }) => {
+  const priceForStripe = price * 100;
+  const publishableKey = 'pk_test_51KDuN1SHW8voN9zSC8kXQgQAyb4TR20E635mCTc7jEVkHGUWADL90mvYzMvERRNUdjjaFSv4rn5LBXNAbqAdXKQq008rTAsOnq';
 
-    const onToken = token => {
-        emptyCart()
-        alert('Payment Successful')
-    }
-    
-    return (
-        <StripeCheckout
-            label={'Pay Now'}
-            name = 'CRWN Clothing'
-            billingAddress
-            shippingAddress
-            image = 'https://svgshare.com/i/CUz.svg'
-            description={`Your total is $${price}`}
-            amount = {priceForStripe}
-            panelLabel={'Pay Now'}
-            token = {onToken}
-            stripeKey={publishableKey}
-        />
-    )
-}
+  const onToken = token => {
+    console.log(token);
+    alert('Payment Succesful!');
+  };
 
-const mapDispatchToProps = dispatch => ({
-    emptyCart: () => dispatch(emptyCart())
-})
+  return (
+    <StripeCheckout
+      label='Pay Now'
+      name='CRWN Clothing Ltd.'
+      billingAddress
+      shippingAddress
+      image='https://svgshare.com/i/CUz.svg'
+      description={`Your total is $${price}`}
+      amount={priceForStripe}
+      panelLabel='Pay Now'
+      token={onToken}
+      stripeKey={publishableKey}
+    />
+  );
+};
 
-export default connect(null,mapDispatchToProps)(StripeCheckoutButton);
+export default StripeCheckoutButton;

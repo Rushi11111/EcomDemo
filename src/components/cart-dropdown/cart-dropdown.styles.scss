@@ -7,8 +7,8 @@
   padding: 20px;
   border: 1px solid black;
   background-color: white;
-  top: 80px;
-  right: 60px;
+  top: 90px;
+  right: 40px;
   z-index: 5;
 
   .empty-message {
@@ -25,12 +25,5 @@
 
   button {
     margin-top: auto;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  ::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
   }
 }
